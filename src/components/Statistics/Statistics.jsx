@@ -1,12 +1,30 @@
-export const Statistics = () => {
+import PropTypes from 'prop-types';
+import { List } from './Statistics.styled';
+
+export const Statistics = ({
+  good,
+  neutral,
+  bad,
+  total,
+  positivePercentage,
+}) => {
   return (
-    <div>
-      <h2>Statistics</h2>
-      <ul>
-        <li>Good: 0</li>
-        <li>Neutral: 0</li>
-        <li>Bad: 0</li>
-      </ul>
-    </div>
+    <List>
+      <li>Good: {good}</li>
+      <li>Neutral: {neutral}</li>
+      <li>Bad: {bad}</li>
+      <li>Total: {total()}</li>
+      <li>
+        Positive feadback: {positivePercentage() ? positivePercentage() : 0}%
+      </li>
+    </List>
   );
+};
+
+Statistics.propTypes = {
+  good: PropTypes.number.isRequired,
+  neutral: PropTypes.number.isRequired,
+  bad: PropTypes.number.isRequired,
+  total: PropTypes.func.isRequired,
+  positivePercentage: PropTypes.func.isRequired,
 };
