@@ -4,12 +4,6 @@ import { FeedbackOptions } from 'components/FeedbackOptions/FeedbackOptions';
 import { Statistics } from './Statistics/Statistics';
 import { Notification } from './Notification/Notification';
 
-const VALUES = {
-  goodValue: 'good',
-  neutralValue: 'neutral',
-  badValue: 'bad',
-};
-
 export class App extends Component {
   state = {
     good: 0,
@@ -36,7 +30,7 @@ export class App extends Component {
         <Section title="Please leave your feadback">
           <FeedbackOptions
             onLeaveFeedback={this.leaveFeedback}
-            options={VALUES}
+            options={Object.keys(this.state)}
           />
         </Section>
         {this.countTotalFeedback() ? (
